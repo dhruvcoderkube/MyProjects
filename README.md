@@ -1,2 +1,3 @@
-# MyProjects
-Learning Projects
+# FirstPackage
+
+A description of this package.
