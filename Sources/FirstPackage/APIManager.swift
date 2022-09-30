@@ -138,20 +138,20 @@ public class APIManager{
 }
 
 var hud = JGProgressHUD(style: .dark)
-func showLoader() {
+public func showLoader() {
     hud.textLabel.text = "please_wait"
     hud.show(in: UIApplication.shared.windows.first!)
 }
 
-func hideLoader() {
+public func hideLoader() {
     hud.dismiss(animated: true)
 }
 
-func stringArrayToData(stringArray: [String]) -> Data? {
+public func stringArrayToData(stringArray: [String]) -> Data? {
   return try? JSONSerialization.data(withJSONObject: stringArray, options: [])
 }
 
-func intArrayToData(stringArray: [Int]) -> Data? {
+public func intArrayToData(stringArray: [Int]) -> Data? {
   return try? JSONSerialization.data(withJSONObject: stringArray, options: [])
 }
 
@@ -159,7 +159,7 @@ func stringDicToData(dic: JSONDictionary) -> Data? {
     return try? JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
 }
 
-func jsonArrayToData(stringArray: [String]) -> Data? {
+public func jsonArrayToData(stringArray: [String]) -> Data? {
   return try? JSONSerialization.data(withJSONObject: stringArray, options: [])
 }
 
@@ -170,7 +170,7 @@ extension Dictionary {
     /// convert dictionary to json string
     ///
     /// - Returns: return value description
-    func convertToJSonString() -> String {
+    public func convertToJSonString() -> String {
         do {
             let dataJSon = try JSONSerialization.data(withJSONObject: self as AnyObject, options: JSONSerialization.WritingOptions.prettyPrinted)
             let st: NSString = NSString.init(data: dataJSon, encoding: String.Encoding.utf8.rawValue)!
@@ -184,7 +184,7 @@ extension Dictionary {
     ///
     /// - Parameter stKey: pass key what you want check
     /// - Returns: true if exist
-    func isKeyNull(_ stKey: String) -> Bool {
+    public func isKeyNull(_ stKey: String) -> Bool {
         let dict: JSONDictionary = (self as AnyObject) as! JSONDictionary
         if let val = dict[stKey] { return val is NSNull ? true : false }
         return true
@@ -196,7 +196,7 @@ extension Dictionary {
     ///
     /// - Parameter stKey: pass the key of object
     /// - Returns: blank string or value if exist
-    func valueForKeyString(_ stKey: String) -> String {
+    public func valueForKeyString(_ stKey: String) -> String {
         let dict: JSONDictionary = (self as AnyObject) as! JSONDictionary
         if let val = dict[stKey] {
             if val is NSNull{
@@ -214,7 +214,7 @@ extension Dictionary {
     }
     
     ///expaned function of null value
-    func valueForKeyString(_ stKey: String,nullvalue:String) -> String {
+    public func valueForKeyString(_ stKey: String,nullvalue:String) -> String {
         return  self.valueForKeyWithNullString(Key: stKey, NullReplaceValue: nullvalue)
     }
     
@@ -234,7 +234,7 @@ extension Dictionary {
     ///   - stKey: pass key of dic
     ///   - NullReplaceValue: set value what you want retun if that key is nill
     /// - Returns: retun key value if exist or return null replace value
-    func valueForKeyWithNullString(Key stKey: String,NullReplaceValue:String) -> String {
+    public func valueForKeyWithNullString(Key stKey: String,NullReplaceValue:String) -> String {
         let dict: JSONDictionary = (self as AnyObject) as! JSONDictionary
         if let val = dict[stKey] {
             if val is NSNull{
@@ -250,7 +250,7 @@ extension Dictionary {
         return NullReplaceValue
     }
     
-    func valuForKeyWithNullWithPlaseString(Key stKey: String,NullReplaceValue:String) -> String {
+    public func valuForKeyWithNullWithPlaseString(Key stKey: String,NullReplaceValue:String) -> String {
         let dict: JSONDictionary = (self as AnyObject) as! JSONDictionary
         if let val = dict[stKey] {
             if val is NSNull{
@@ -272,7 +272,7 @@ extension Dictionary {
         return NullReplaceValue
     }
     
-    func valuForKeyArray(_ stKey: String) -> Array<Any> {
+    public func valuForKeyArray(_ stKey: String) -> Array<Any> {
         let dict: JSONDictionary = (self as AnyObject) as! JSONDictionary
         if let val = dict[stKey] {
             if val is NSNull{
@@ -307,7 +307,7 @@ extension Dictionary {
     /// This is function for convert dicticonery to xml string also check log for other type of string i only handal 2 or 3 type of stct
     ///
     /// - Returns: return xml string
-    func createXML()-> String{
+    public func createXML()-> String{
         
         var xml = ""
         for k in self.keys {
@@ -351,10 +351,11 @@ extension Dictionary {
         return xml
     }
     
-    func valueForKeyInt( _ any:String) -> Int {
+    public func valueForKeyInt( _ any:String) -> Int {
         return valueForKeyInt(any,nullValue: 0)
     }
-    func valueForKeyInt( _ any:String,nullValue :Int) -> Int {
+    
+    public func valueForKeyInt( _ any:String,nullValue :Int) -> Int {
         var iValue: Int = 0
         let dict: JSONDictionary = self as! JSONDictionary
         if let val = dict[any] {
