@@ -12,7 +12,7 @@ let english = "en"
 let arabic = "ar"
 let APPLE_LANGUAGE = "AppleLanguages"
 
-func setLanguage(lng: String) {
+public func setLanguage(lng: String) {
     UserDefaults.standard.setValue(lng, forKey: APPLE_LANGUAGE)
     UserDefaults.standard.synchronize()
 }
@@ -20,7 +20,7 @@ func setLanguage(lng: String) {
 
 /// Get currunt lang code for localization
 /// - Returns: retun short code `en` or `ar`
-func getLanguage() -> String {
+public func getLanguage() -> String {
     if let arr = (UserDefaults.standard.object(forKey: APPLE_LANGUAGE) as? [String]) {
         return arr[0]
     }
@@ -30,7 +30,7 @@ func getLanguage() -> String {
 //MARK: - lang functions
 /// Get currunt lang code
 /// - Returns: retun lang code
-func getLangCode () -> String{
+public func getLangCode () -> String{
     if let arr = (UserDefaults.standard.object(forKey: APPLE_LANGUAGE) as? [String]) {
         if arr[0].hasPrefix("ar"){
             return "ar"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIEndPoint{
+public enum APIEndPoint{
     
     case EndPoint
         

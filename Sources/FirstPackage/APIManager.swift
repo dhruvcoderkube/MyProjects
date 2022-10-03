@@ -11,12 +11,12 @@ import SwiftyJSON
 import JGProgressHUD
 
 ///THIS IS JSON Dictionary format
-typealias JSONDictionary = Dictionary<String, AnyObject>
-typealias JSONStringDictionary = Dictionary<String, String>
+public typealias JSONDictionary = Dictionary<String, AnyObject>
+public typealias JSONStringDictionary = Dictionary<String, String>
 
 ///THIS IS JSON array format
-typealias JSONArray = Array<AnyObject>
-typealias json = JSON
+public typealias JSONArray = Array<AnyObject>
+public typealias json = JSON
 
 public class APIManager{
     
@@ -24,7 +24,7 @@ public class APIManager{
     
     //MARK: - Call Services
     /// Commonfunction that is used to call all the APIs
-    func CallService(serviceName : APIEndPoint, parameters : Parameters, method : HTTPMethod , isShowloader:Bool = true, withSuccess : @escaping ((_ responseObj : JSONDictionary?) -> Void), failure : @escaping ((_ error : String?) -> Void)) {
+    public func CallService(serviceName : APIEndPoint, parameters : Parameters, method : HTTPMethod , isShowloader:Bool = true, withSuccess : @escaping ((_ responseObj : JSONDictionary?) -> Void), failure : @escaping ((_ error : String?) -> Void)) {
         
         let pageUrlStr =  Config().BaseUrl + serviceName.value
         
@@ -74,7 +74,7 @@ public class APIManager{
 
     //MARK: - Call Services
     /// Common function that is used to call all the APIs
-    func CallUploadService(serviceName : APIEndPoint, parameters : Parameters,files:[JSONDictionary], method : HTTPMethod , isShowloader:Bool = true, withSuccess : @escaping ((_ responseObj : JSONDictionary?) -> Void), failure : @escaping ((_ error : String?) -> Void)) {
+    public func CallUploadService(serviceName : APIEndPoint, parameters : Parameters,files:[JSONDictionary], method : HTTPMethod , isShowloader:Bool = true, withSuccess : @escaping ((_ responseObj : JSONDictionary?) -> Void), failure : @escaping ((_ error : String?) -> Void)) {
         
         let pageUrlStr = Config().BaseUrl + serviceName.value
         
@@ -158,7 +158,7 @@ public func intArrayToData(stringArray: [Int]) -> Data? {
   return try? JSONSerialization.data(withJSONObject: stringArray, options: [])
 }
 
-func stringDicToData(dic: JSONDictionary) -> Data? {
+public func stringDicToData(dic: JSONDictionary) -> Data? {
     return try? JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
 }
 
@@ -293,7 +293,7 @@ extension Dictionary {
     
     /// dic
     /// - Parameter stKey: <#stKey description#>
-    func valuForKeyDic(_ stKey: String) -> JSONDictionary {
+    public func valuForKeyDic(_ stKey: String) -> JSONDictionary {
         let dict: JSONDictionary = (self as AnyObject) as! JSONDictionary
         if let val = dict[stKey] {
             if val is NSNull{
