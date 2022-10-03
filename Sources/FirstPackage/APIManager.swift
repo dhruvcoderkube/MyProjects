@@ -19,6 +19,9 @@ typealias JSONArray = Array<AnyObject>
 typealias json = JSON
 
 public class APIManager{
+    
+    public init() {}
+    
     //MARK: - Call Services
     /// Commonfunction that is used to call all the APIs
     func CallService(serviceName : APIEndPoint, parameters : Parameters, method : HTTPMethod , isShowloader:Bool = true, withSuccess : @escaping ((_ responseObj : JSONDictionary?) -> Void), failure : @escaping ((_ error : String?) -> Void)) {
